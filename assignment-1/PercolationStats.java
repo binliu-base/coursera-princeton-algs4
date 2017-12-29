@@ -7,6 +7,7 @@ public class PercolationStats {
   private double[] thresholds;
   private int experiments;
   private int size;
+  private double mean,stddev;
 
   // perform T independent computational experiments on an N-by-N grid
   public PercolationStats(int N, int T) {
@@ -20,6 +21,8 @@ public class PercolationStats {
     for (int i=0; i<T; i++) {
       thresholds[i] = findPercolationThreshold();
     }
+    mean = this.mean();
+    stddev = this.stddev();
   } 
 
   // sample mean of percolation threshold
@@ -35,12 +38,12 @@ public class PercolationStats {
 
   // returns lower bound of the 95% confidence interval
   public double confidenceLo() {
-    return mean() - 1.96*stddev()/Math.sqrt(experiments);
+    return this.mean - 1.96*this.stddev/Math.sqrt(experiments);
   }
 
   // returns upper bound of the 95% confidence interval
   public double confidenceHi() {
-    return mean() + 1.96*stddev()/Math.sqrt(experiments);
+    return this.mean + 1.96*this.stddev/Math.sqrt(experiments);
   }
   
   private double findPercolationThreshold() {
@@ -63,8 +66,8 @@ public class PercolationStats {
     int N = Integer.parseInt(args[0]);
     int T = Integer.parseInt(args[1]);
     PercolationStats stats = new PercolationStats(N, T);
-    StdOut.printf("mean = %f\n", stats.mean());
-    StdOut.printf("stddev = %f\n", stats.stddev());
+    StdOut.printf("mean = %f\n", stats.mean);
+    StdOut.printf("stddev = %f\n", stats.stddev);
     StdOut.printf("95%% confidence interval = %f, %f\n", stats.confidenceLo(), stats.confidenceHi());
   }
 }

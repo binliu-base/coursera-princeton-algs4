@@ -17,6 +17,7 @@ public class Percolation {
             throw new IllegalArgumentException("N must be bigger than 0");
         } 
          this.N = N;
+         this.count = 0;
          uf = new WeightedQuickUnionUF(N*N);
          open = new boolean[N*N];  
          connectTop = new boolean[N*N];  
@@ -33,8 +34,10 @@ public class Percolation {
     public void open(int i, int j)  {        // open site (row i, column j) if it is not open already
         validateIJ(i, j); 
         int index = flat(i, j);
-        open[index] = true;  //open
-        this.count +=1;
+        if (!(open[index])){
+          open[index] = true;  //open
+          this.count = count + 1;
+        }
         boolean top = false;
         boolean bottom = false;
        
@@ -94,7 +97,7 @@ public class Percolation {
     
     private void validateIJ(int i, int j) {
         if (!(i >= 1 && i <= N && j >= 1 && j <= N)) {
-            throw new IndexOutOfBoundsException("Index is not betwwen 1 and N");
+            throw new IllegalArgumentException("Index is not betwwen 1 and N");
         }
     }
     
