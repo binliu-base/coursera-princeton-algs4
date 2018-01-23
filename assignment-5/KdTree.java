@@ -43,7 +43,7 @@ public class KdTree {
     }    
 
     public void insert(Point2D p) {
-        if (!p) throw new java.lang.IllegalArgumentException("this is a null argumentk!");        
+        if (p==null) throw new java.lang.IllegalArgumentException("this is a null argumentk!");        
 
         root = insert(root, p, true);
     }
@@ -80,7 +80,7 @@ public class KdTree {
     }    
 
     public boolean contains(Point2D p) {
-        if (!p) throw new java.lang.IllegalArgumentException("this is a null argumentk!");                
+        if (p==null) throw new java.lang.IllegalArgumentException("this is a null argumentk!");                
         Node node = root;
         while (node != null) {
             if (p.equals(node.key)) {
@@ -148,7 +148,7 @@ public class KdTree {
      * @return all points in the set that are inside the rectangle.
      */
     public Iterable<Point2D> range(RectHV rect) {
-        if (!rect) throw new java.lang.IllegalArgumentException("this is a null argumentk!");                
+        if (rect==null) throw new java.lang.IllegalArgumentException("this is a null argumentk!");                
         Queue<Point2D> pointsInRect = new Queue<Point2D>();
         range(root, UNIT_SQUARE, rect, pointsInRect);
         return pointsInRect;
@@ -181,7 +181,7 @@ public class KdTree {
      * @return a nearest neighbor in the 2d-tree to p; null if 2d-tree is empty.
      */
     public Point2D nearest(Point2D p) {
-        if (!p) throw new java.lang.IllegalArgumentException("this is a null argumentk!");                
+        if (p==null) throw new java.lang.IllegalArgumentException("this is a null argumentk!");                
         return nearest(root, UNIT_SQUARE, p, null);
     }
 
