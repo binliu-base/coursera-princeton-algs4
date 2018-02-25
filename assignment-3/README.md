@@ -1,2 +1,2 @@
-# Programming Assignment 3: Pattern Recognition
+# Programming Assignment 3: Colinear Points
 

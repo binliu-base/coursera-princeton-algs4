@@ -10,3 +10,9 @@
 ### Programming Assignment #2: Deques and Randomized Queues
 
 [assignment description](http://coursera.cs.princeton.edu/algs4/assignments/queues.html)
+
+### Programming Assignment #3: Colinear Points
+
+### Programming Assignment #4: 8 Puzzle
+
+### Programming Assignment #5: Kd-Trees
